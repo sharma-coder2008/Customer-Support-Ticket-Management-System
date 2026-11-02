@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Warriors - Support Ticket System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Support Ticket System</h1>
+  </header>
+
+  <!-- ================= PAGE 1: HOME DASHBOARD ================= -->
+  <main id="homePage">
+    <h2 class="center">Who are you?</h2>
+    <div class="boxes">
+      <div class="box" id="customerBox">
+        <h3>Customer</h3>
+        <p>Raise a ticket or check your tickets</p>
+        <button class="primary">Raise a Ticket</button>
+      </div>
+      <div class="box" id="agentBox">
+        <h3>Agent</h3>
+        <p>Login to reply to tickets</p>
+        <button class="primary">Agent Login</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= PAGE 2: CUSTOMER ================= -->
+  <main id="customerPage" class="hidden">
+    <button class="back" id="customerBackBtn">&larr; Back</button>
+
+    <section class="card">
+      <h2>Raise a New Ticket</h2>
+      <form id="ticketForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name">
+
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="you@example.com">
+
+        <label for="category">Category</label>
+        <select id="category">
+          <option value="">-- Select --</option>
+          <option value="Billing">Billing</option>
+          <option value="Technical">Technical</option>
+          <option value="Account">Account</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="priority">Priority</label>
+        <select id="priority">
+          <option value="Low">Low</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" placeholder="Short title of your problem">
+
+        <label for="description">Description</label>
+        <textarea id="description" rows="4" placeholder="Explain your problem (minimum 10 characters)"></textarea>
+
+        <p id="formError" class="error"></p>
+        <button type="submit" class="primary">Submit Ticket</button>
+      </form>
+      <p id="successMsg" class="success"></p>
+    </section>
+
+    <section class="card">
+      <h2>Check My Tickets</h2>
+      <div class="row">
+        <input type="text" id="trackEmail" placeholder="Enter the email used in ticket">
+        <select id="trackFilter">
+          <option value="All">All</option>
+          <option value="Open">Open</option>
+          <option value="Closed">Closed</option>
+        </select>
+        <button class="primary" id="trackBtn">Search</button>
+      </div>
+      <p id="trackCount"></p>
+      <div id="customerTickets"></div>
+    </section>
+  </main>
+
+  <!-- ================= PAGE 3: AGENT LOGIN ================= -->
+  <main id="loginPage" class="hidden">
+    <button class="back" id="loginBackBtn">&larr; Back</button>
+
+    <section class="card small">
+      <h2>Agent Login</h2>
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Username">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password">
+
+      <p id="loginError" class="error"></p>
+      <button class="primary" id="loginBtn">Login</button>
+    </section>
+  </main>
+
+  <!-- ================= PAGE 4: AGENT DASHBOARD ================= -->
+  <main id="agentPage" class="hidden">
+    <button class="back" id="logoutBtn">Logout</button>
+
+    <section class="card">
+      <h2>Dashboard</h2>
+      <div class="stats">
+        <div class="stat"><span id="statTotal">0</span><p>Total</p></div>
+        <div class="stat"><span id="statOpen">0</span><p>Open</p></div>
+        <div class="stat"><span id="statClosed">0</span><p>Closed</p></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Open Tickets</h2>
+      <div id="openTickets"></div>
+    </section>
+
+    <section class="card">
+      <h2>Closed Tickets</h2>
+      <div id="closedTickets"></div>
+    </section>
+  </main>
+
+  <footer>Team Web Warriors | CSE326</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

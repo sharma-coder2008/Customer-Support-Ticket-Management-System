@@ -1,0 +1,406 @@
+/* ================= Colors and common values (CSS variables) ================= */
+:root {
+  --main: #4f46e5;
+  --main-dark: #3730a3;
+  --accent: #06b6d4;
+  --light: #eef2ff;
+  --text: #1e1b4b;
+  --grey: #6b7280;
+  --red: #ef4444;
+  --green: #10b981;
+  --white: #ffffff;
+  --radius: 14px;
+  --shadow: 0 4px 14px rgba(79, 70, 229, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #e0f2fe);
+  background-attachment: fixed;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= Header ================= */
+header {
+  background: linear-gradient(135deg, var(--main), var(--accent));
+  color: var(--white);
+  padding: 22px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+header h1::before {
+  content: "🎫 ";
+}
+
+/* ================= Page layout ================= */
+main {
+  width: 100%;
+  max-width: 920px;
+  margin: 30px auto;
+  padding: 0 15px;
+  display: grid;
+  gap: 22px;
+  animation: slideUp 0.6s;
+}
+
+.hidden {
+  display: none;
+}
+
+.center {
+  text-align: center;
+  font-size: 30px;
+  margin: 10px 0 0;
+}
+
+/* ================= Home page boxes ================= */
+.boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.box {
+  background: var(--white);
+  padding: 40px 25px;
+  text-align: center;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--main);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#agentBox {
+  border-top-color: var(--accent);
+}
+
+.box::before {
+  display: block;
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+#customerBox::before {
+  content: "🙋";
+}
+
+#agentBox::before {
+  content: "🎧";
+}
+
+.box:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 14px 28px rgba(79, 70, 229, 0.3);
+}
+
+.box h3 {
+  color: var(--main);
+  font-size: 26px;
+  margin: 0 0 8px;
+}
+
+.box p {
+  color: var(--grey);
+  margin: 0;
+}
+
+/* ================= Cards ================= */
+.card {
+  background: var(--white);
+  padding: 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.25);
+}
+
+.card.small {
+  max-width: 420px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--main);
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--light);
+}
+
+/* ================= Form fields ================= */
+label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 600;
+  color: var(--main-dark);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fafbff;
+  transition: 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--main);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+/* ================= Buttons ================= */
+button.primary {
+  background: linear-gradient(135deg, var(--main), var(--accent));
+  color: var(--white);
+  border: none;
+  padding: 12px 26px;
+  margin-top: 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.35);
+  transition: 0.3s;
+}
+
+button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.45);
+}
+
+button.primary:active {
+  transform: translateY(0);
+}
+
+button.back {
+  background: var(--white);
+  border: 2px solid var(--main);
+  color: var(--main);
+  padding: 8px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+  transition: 0.3s;
+}
+
+button.back:hover {
+  background: var(--main);
+  color: var(--white);
+}
+
+/* ================= Search row (Flexbox) ================= */
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.row input,
+.row select {
+  flex: 1;
+  min-width: 140px;
+}
+
+.row button {
+  margin-top: 6px;
+}
+
+/* ================= Messages ================= */
+.error {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.success {
+  color: #047857;
+  background: #d1fae5;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.success:not(:empty) {
+  padding: 12px;
+  animation: slideUp 0.5s;
+}
+
+#trackCount {
+  font-weight: 600;
+  color: var(--main-dark);
+}
+
+/* ================= Dashboard numbers (Grid) ================= */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  background: linear-gradient(135deg, var(--light), var(--white));
+  border: 2px solid var(--light);
+  text-align: center;
+  padding: 20px 10px;
+  border-radius: var(--radius);
+  transition: 0.3s;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+  border-color: var(--main);
+}
+
+.stat span {
+  font-size: 38px;
+  font-weight: bold;
+  color: var(--main);
+}
+
+.stat p {
+  margin: 6px 0 0;
+  color: var(--grey);
+  font-weight: 600;
+}
+
+/* ================= Ticket card ================= */
+.ticket {
+  background: #fafbff;
+  border: 1px solid #e5e7eb;
+  border-left: 7px solid var(--main);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 18px;
+  transition: 0.3s;
+  animation: slideUp 0.5s;
+}
+
+.ticket:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
+}
+
+.ticket.Open {
+  border-left-color: var(--red);
+}
+
+.ticket.Closed {
+  border-left-color: var(--green);
+}
+
+.ticket h3 {
+  margin: 0 0 8px;
+  color: var(--main-dark);
+}
+
+.ticket small {
+  color: var(--grey);
+}
+
+.ticket p {
+  line-height: 1.5;
+}
+
+/* ================= Status badge ================= */
+.badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge.Open {
+  background: var(--red);
+}
+
+.badge.Closed {
+  background: var(--green);
+}
+
+/* ================= Agent reply ================= */
+.reply {
+  background: #ecfdf5;
+  border-left: 4px solid var(--green);
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+/* ================= Footer ================= */
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 20px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--main-dark), var(--main));
+  font-weight: 600;
+}
+
+/* ================= Animation ================= */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= Mobile screens ================= */
+@media (max-width: 600px) {
+  .boxes {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+
+  .center {
+    font-size: 24px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
